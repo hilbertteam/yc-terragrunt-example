@@ -74,11 +74,17 @@
 Зависимости terragrunt-модулей внутри окружения:
 
 yandex.ycr -> yandex.subnet -> yandex.folder
+
 yandex.k8s-cluster -> yandex.folder
+
 yandex.k8s-cluster -> yandex.subnet -> yandex.folder
+
 gitlab.repo -> yandex.ycr
+
 helm -> yandex.folder
+
 helm -> yandex.k8s-cluster
+
 helm.release -> gitab.repo
 
 Шаблон `env-live-tmpl` реализован таким образом, чтобы окружения на его основе можно было создавать без модификации файлов в шаблоне, просто скопировав его в директорию `live` под нужным имененм.
@@ -110,32 +116,32 @@ helm.release -> gitab.repo
 
 Заполните значения переменных:
 
-`AWS_ACCESS_KEY_ID` - идентификатор статического ключа сервисного аккаунта, назначенного виртуальной машине `yc-toolbox`
-`AWS_SECRET_ACCESS_KEY` - секретная часть статического ключа сервисного аккаунта, назначенного виртуальной машине `yc-toolbox`
-`TF_VAR_gitlab_token` - персональный авторизационный токен администратора GitLab
+- `AWS_ACCESS_KEY_ID` - идентификатор статического ключа сервисного аккаунта, назначенного виртуальной машине `yc-toolbox`
+- `AWS_SECRET_ACCESS_KEY` - секретная часть статического ключа сервисного аккаунта, назначенного виртуальной машине `yc-toolbox`
+- `TF_VAR_gitlab_token` - персональный авторизационный токен администратора GitLab
 
 ### `live/terragrunt.hcl`
 
 Заполните значения переменных:
 
-`bucket_name` - имя s3 бакета в Yandex Object Storage для хранения стейта terraform, созданного ранее в каталоге `common` в Yandex Cloud
-`dynamodb_endpoint` - DynamoDB Document API endpoint, ссылка для доступа к DynamoDB для хранения блокировок, можно посмотреть в свойствах базы YDB созданной ранее в каталоге `common` в Yandex Cloud
-`dynamodb_table` - имя таблицы в YDB для хранения блокировок, изменить если отличается.
+- `bucket_name` - имя s3 бакета в Yandex Object Storage для хранения стейта terraform, созданного ранее в каталоге `common` в Yandex Cloud
+- `dynamodb_endpoint` - DynamoDB Document API endpoint, ссылка для доступа к DynamoDB для хранения блокировок, можно посмотреть в свойствах базы YDB созданной ранее в каталоге `common` в Yandex Cloud
+- `dynamodb_table` - имя таблицы в YDB для хранения блокировок, изменить если отличается.
 
 ### `live/common.hcl`
 
 Заполните значения переменных:
 
-`vpc_id` - идентификатор сети в каталоге `common` в Yandex Cloud
-`gitlab_project_import_url` - url шаблонного git-репозитория. В GitLab будут созданы репозитории идентичные указанному в данном url
-`gitlab_group_full_path` - имя группы/подгруппы в GitLab, в которой будут создаваться репозитории
-`helm_ingress_domain` - домен для ingress который можно использовать в helm-чартах. В данном примере не используется
+- `vpc_id` - идентификатор сети в каталоге `common` в Yandex Cloud
+- `gitlab_project_import_url` - url шаблонного git-репозитория. В GitLab будут созданы репозитории идентичные указанному в данном url
+- `gitlab_group_full_path` - имя группы/подгруппы в GitLab, в которой будут создаваться репозитории
+- `helm_ingress_domain` - домен для ingress который можно использовать в helm-чартах. В данном примере не используется
 
 ### `live/env.hcl`
 
 Заполните значения переменных:
 
-`gitlab_fqdn` fqdn инстанса GitLab, в котором будут созданы пользователи и репозитории
+- `gitlab_fqdn` fqdn инстанса GitLab, в котором будут созданы пользователи и репозитории
 
 ### `live/envs.hcl`
 
