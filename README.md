@@ -1,4 +1,4 @@
-# Пример репозитория для Yandex Scale KZ 2024
+# Пример инфраструктурного terragrunt-репозитория для деплоя в Yandex Cloud
 
 Данный репозиторий представлен как пример Infrastructure as Code для развертывания инфраструктуры в Yandex Cloud с помощью terraform и trerragrunt.
 
