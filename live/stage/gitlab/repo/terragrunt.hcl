@@ -1,7 +1,7 @@
 locals {
   common = read_terragrunt_config(find_in_parent_folders("common.hcl")).locals
   dir = read_terragrunt_config(find_in_parent_folders("dir.hcl")).locals
-  users = read_terragrunt_config(find_in_parent_folders("users.hcl")).locals
+  envs = read_terragrunt_config(find_in_parent_folders("envs.hcl")).locals
 }
 
 include "root" {
@@ -30,7 +30,7 @@ inputs = {
   group_full_path = local.common.gitlab_group_full_path
   project_name = local.dir.dir_name
   project_import_url = local.common.gitlab_project_import_url
-  gitlab_project_force_recreate_salt = "${local.users.users[local.dir.dir_name].gitlab_project_force_recreate_salt}"
+  gitlab_project_force_recreate_salt = "${local.envs.envs[local.dir.dir_name].gitlab_project_force_recreate_salt}"
   project_owners = [
     # "vsyscoder",
     # "kazhem"

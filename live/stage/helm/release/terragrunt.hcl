@@ -2,7 +2,7 @@ locals {
   env    = read_terragrunt_config(find_in_parent_folders("env.hcl")).locals
   common = read_terragrunt_config(find_in_parent_folders("common.hcl")).locals
   dir    = read_terragrunt_config(find_in_parent_folders("dir.hcl")).locals
-  users  = read_terragrunt_config(find_in_parent_folders("users.hcl")).locals
+  envs   = read_terragrunt_config(find_in_parent_folders("envs.hcl")).locals
 
   subnet_name = format("subnet-public-%s", local.dir.dir_name)
 }
@@ -43,7 +43,7 @@ inputs = {
   runner_repo_token = dependency.gitlab.outputs.project_runners_token
   agent_token       = dependency.gitlab.outputs.agent_token
   subnet_id = dependency.subnet.outputs.subnet_ids[format("subnet-public-%s", local.dir.dir_name)]
-  loadbalancer_ip = format("10.%s.0.200", local.users.users[local.dir.dir_name].subnet_octet)
+  loadbalancer_ip = format("10.%s.0.200", local.envs.envs[local.dir.dir_name].subnet_octet)
   ingress_host = format("%s.%s", local.dir.dir_name, local.common.helm_ingress_domain)
   # student_name = local.dir.dir_name
 }

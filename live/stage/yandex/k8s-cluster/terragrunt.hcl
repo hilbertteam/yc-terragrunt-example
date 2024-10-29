@@ -2,7 +2,6 @@ locals {
   env    = read_terragrunt_config(find_in_parent_folders("env.hcl")).locals
   common = read_terragrunt_config(find_in_parent_folders("common.hcl")).locals
   dir    = read_terragrunt_config(find_in_parent_folders("dir.hcl")).locals
-  users  = read_terragrunt_config(find_in_parent_folders("users.hcl")).locals
 
   subnet_name = format("subnet-public-%s", local.dir.dir_name)
 }
