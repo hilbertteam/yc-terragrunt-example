@@ -142,6 +142,9 @@ helm.release -> gitab.repo
 Заполните значения переменных:
 
 - `gitlab_fqdn` fqdn инстанса GitLab, в котором будут созданы пользователи и репозитории
+- `yc_cloud_id` идентификатор вашего облака для yandex cloud terraform provider
+- `yc_zone_id` идентификатор зоны доступности по умолчанию для yandex cloud terraform provider
+- `yc_folder_id` идентификатор каталога по умолчанию для yandex cloud terraform provider. Здесь можно указать идентификатор каталога `common`
 
 ### `live/envs.hcl`
 
